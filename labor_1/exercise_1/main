@@ -1,0 +1,43 @@
+//The program checks whether the fractions are similar.
+#include "Rational.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+	Rational x;
+	Rational y;
+	int mechane;
+	int mone;
+	char note;
+	cout << "enter two rational numbers" << endl;
+	cin >> mone >>note>> mechane;
+	x.setmone(mone);
+	//cin >> note;
+	x.setmechane(mechane);
+	if (x.getmechane()==0)
+	{
+		cout << "ERROR" << endl;
+		return 0;
+	}
+	cin >> mone >> note >> mechane;
+
+	y.setmone(mone);
+	//cin >> note;
+	y.setmechane(mechane);
+	if (y.getmechane() == 0)
+	{
+		cout << "ERROR" << endl;
+		return 0;
+	}
+	if (x.equal(y) == true)
+		cout << "equal";
+	else
+	{
+		cout << "different";
+		cout << endl;
+		x.print();
+		y.print();
+		cout << endl;
+	}
+	return 0;	
+}
