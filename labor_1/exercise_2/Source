@@ -1,0 +1,52 @@
+//The program finds the employee with the highest salary and the employee with the most hours worked.
+
+#include "worker.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+	int ID = 0;
+	char NAME[20];;
+	int SALARY = 0;
+	int HOUR = 0;
+	int MOREHOUR = 0;
+	int salarymax = 0;
+	int idmaxs = 0;
+	int idmaxh = 0;
+	char namemaxs[20];
+	char namemaxh[20];
+	int hourmax = 0;
+	cout << "enter details, to end enter 0" << endl;
+	cin >> ID;
+	while (ID!=0)
+	{
+		worker theWork;
+		cin >> NAME;
+		cin >> SALARY;
+		cin >> HOUR;
+		cin >> MOREHOUR;
+		theWork.setid(ID);
+		theWork.setname(NAME);
+		theWork.setsalary(SALARY);
+		theWork.sethour(HOUR);
+		theWork.setmorehour(MOREHOUR);
+		if ((theWork.getid() < 0) || (theWork.getsalary() < 0) || (theWork.gethour() < 0))
+			cout << "ERROR" << endl;
+		if (theWork.calculation()>salarymax)
+		{
+			salarymax = theWork.calculation();
+			idmaxs = theWork.getid();
+			strcpy(namemaxs, theWork.getname());
+		}
+		if (theWork.gethour() + theWork.getmorehour() > hourmax)
+		{
+			hourmax = theWork.gethour() + theWork.getmorehour();
+			idmaxh = theWork.getid();
+			strcpy(namemaxh, theWork.getname());
+		}
+		cin >> ID;
+	}
+	cout << "highest salary: " << idmaxs << "  " << namemaxs << endl;
+	cout << "hardest worker: " << idmaxh << "  " << namemaxh << endl;
+	return 0;
+}
